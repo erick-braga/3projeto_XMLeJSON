@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos/style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Manipulação de JSON e XML</title>
+</head>
+
+
+<body>
+        <footer style="padding: 20px; 
+    width: 100%;
+    background-color: rgb(88, 134, 173);
+    color: white;
+    text-align: center;
+    ">
+        Feito com &#x2764 por Erick Henrique Braga Mota e André Farinelli Gonzales
+    </footer>
+    <div class="container">
+
+        <div id="container2">
+            <main>
+                <h1>Manipulação de JSON e XML</h1><br>
+                <form id="formDados">
+                    <div>
+                        <label for="nome">Nome:</label><br>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div>
+                        <label for="idade">Idade:</label><br>
+                        <input type="number" id="idade" name="idade" required>
+                    </div>
+                    <div>
+                        <label for="cidade">Cidade:</label><br>
+                        <input type="text" id="cidade" name="cidade" required>
+                    </div>
+                    <button type="submit">Adicionar Dados</button>
+                </form>
+            </main>
+            <div class="format-buttons">
+                <button id="mostrarDadosJSON">Mostrar Dados (JSON)</button>
+                <button id="mostrarDadosXML">Mostrar Dados (XML)</button>
+                <button id="exportarJSON">Exportar JSON</button>
+                <button id="exportarXML">Exportar XML</button>
+                <button id="limparDados">Limpar Dados</button>
+            </div>
+        </div>
+
+        <div id="resultado-pre">
+            <h1 style="text-align: center;">Visualização dos dados de JSON e XML </h1>
+            <br>
+            <hr style="width: 600px; margin: auto;"><br>
+            <pre id="resultado"></pre>
+        </div>
+    </div>
+
+
+
+    
+    <script>
+
+        localStorage.clear();
+
+
+        function adicionarDados(event) {
+            event.preventDefault();
+
+
+            const nome = document.getElementById('nome').value;
+            const idade = document.getElementById('idade').value;
+            const cidade = document.getElementById('cidade').value;
+
+            const novosDados = {
+                nome: nome,
+                idade: parseInt(idade),
+                cidade: cidade
+            };
+
+            const dadosExistentes = JSON.parse(localStorage.getItem('dadosJSON')) || [];
+
+            dadosExistentes.push(novosDados);
+
+            localStorage.setItem('dadosJSON', JSON.stringify(dadosExistentes));
+
+
+            document.getElementById('formDados').reset();
+
+            alert('Dados adicionados com sucesso!');
+        }
+
+        function mostrarDadosJSON() {
+
+            const dados = localStorage.getItem('dadosJSON');
+            const resultado = document.getElementById('resultado');
+
+            resultado.textContent = dados ? JSON.stringify(JSON.parse(dados), null, 2) : 'Nenhum dado encontrado.';
+        }
+
+
+        function jsonParaXml(json) {
+            let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<dados>\n';
+
+            JSON.parse(json).forEach(item => {
+                xml += '  <registro>\n';
+                xml += `    <nome>${item.nome}</nome>\n`;
+                xml += `    <idade>${item.idade}</idade>\n`;
+                xml += `    <cidade>${item.cidade}</cidade>\n`;
+                xml += '  </registro>\n';
+            });
+
+            xml += '</dados>';
+            return xml;
+        }
+
+        function mostrarDadosXML() {
+            const dados = localStorage.getItem('dadosJSON');
+            const resultado = document.getElementById('resultado');
+
+            if (dados) {
+                resultado.textContent = jsonParaXml(dados);
+            } else {
+                resultado.textContent = 'Nenhum dado encontrado.';
+            }
+        }
+
+        function exportarJSON() {
+            const dados = localStorage.getItem('dadosJSON');
+
+            if (!dados) {
+                alert('Nenhum dado encontrado para exportar.');
+                return;
+            }
+
+            const blob = new Blob([dados], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'dados.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function exportarXML() {
+            const dados = localStorage.getItem('dadosJSON');
+
+            if (!dados) {
+                alert('Nenhum dado encontrado para exportar.');
+                return;
+            }
+
+            const xml = jsonParaXml(dados);
+            const blob = new Blob([xml], { type: 'application/xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'dados.xml';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+
+        function limparDados() {
+            if (confirm('Tem certeza que deseja limpar todos os dados?')) {
+                localStorage.removeItem('dadosJSON');
+                document.getElementById('resultado').textContent = 'Dados limpos com sucesso.';
+            }
+        }
+
+        document.getElementById('formDados').addEventListener('submit', adicionarDados);
+        document.getElementById('mostrarDadosJSON').addEventListener('click', mostrarDadosJSON);
+        document.getElementById('mostrarDadosXML').addEventListener('click', mostrarDadosXML);
+        document.getElementById('exportarJSON').addEventListener('click', exportarJSON);
+        document.getElementById('exportarXML').addEventListener('click', exportarXML);
+        document.getElementById('limparDados').addEventListener('click', limparDados);
+    </script>
+</body>
+
+</html>

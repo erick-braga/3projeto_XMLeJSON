@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #F1F1F1;
+}
+
+.container {
+    margin-top: 100px;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    flex-flow: column nowrap;
+    gap: 20px;
+}
+
+#container2 {
+    display: flex;
+    gap: 20px;
+
+
+}
+
+#resultado-pre {
+    border: 1px solid black;
+    background-color: white;
+    width: 750px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.24);
+    margin-bottom: 2000px;
+}
+
+main {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.24);
+    height: 365px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button {
+    background-color: rgb(88, 134, 173);
+    width: 100%;
+    color: white;
+    border: 0px;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    transition: 0.2s ease-in-out;
+}
+
+button:hover {
+        background-color: rgb(55, 83, 107);
+
+}
+.format-buttons {
+    display: flex;
+    flex-flow: column;
+    background-color: white;
+    padding: 20px;
+    height: 365px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.24);
+}
+
+.format-buttons>button {
+    display: block;
+    width: 200px;
+    padding: 10px;
+}
+
+#resultado {
+    background-color: white;
+    padding: 20px;
+}
