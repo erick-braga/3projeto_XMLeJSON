@@ -11,7 +11,7 @@
 
 
 <body>
-        <footer style="padding: 20px; 
+    <footer style="padding: 20px; 
     width: 100%;
     background-color: rgb(88, 134, 173);
     color: white;
@@ -26,18 +26,110 @@
                 <h1>Manipulação de JSON e XML</h1><br>
                 <form id="formDados">
                     <div>
-                        <label for="nome">Nome:</label><br>
-                        <input type="text" id="nome" name="nome" required>
+                        <label for="Id">Id:</label><br>
+                        <input type="int" id="Id" name="Id" required>
                     </div>
                     <div>
-                        <label for="idade">Idade:</label><br>
-                        <input type="number" id="idade" name="idade" required>
+                        <label for="Titulo">Titulo:</label><br>
+                        <input type="text" id="Titulo" name="Titulo" required>
                     </div>
                     <div>
-                        <label for="cidade">Cidade:</label><br>
-                        <input type="text" id="cidade" name="cidade" required>
+                        <label for="Editora">Editora:</label><br>
+                        <input type="text" id="Editora" name="Editora" required>
                     </div>
-                    <button type="submit">Adicionar Dados</button>
+                    <div>
+                        <label for="Autor">Autor:</label><br>
+                        <input type="text" id="Autor" name="Autor" required>
+                    </div>
+                    <div>
+                        <label for="Idioma">Idioma:</label><br>
+                        <input type="text" id="Idioma" name="Idioma" required>
+                    </div>
+                    <div>
+                        <label for="Genero">Gênero:</label><br>
+                        <select id="Genero" name="Genero" required>
+                            <option value="" disabled selected>Gênero</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Conto">Conto</option>
+                            <option value="Crônica">Crônica</option>
+                            <option value="Poesia">Poesia</option>
+                            <option value="Fábula">Fábula</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Comédia">Comédia</option>
+                            <option value="Tragédia">Tragédia</option>
+                            <option value="Auto">Auto</option>
+                            <option value="Ensaios">Ensaios</option>
+                            <option value="Literatura Infantil">Literatura Infantil</option>
+                            <option value="Literatura Juvenil">Literatura Juvenil</option>
+                            <option value="Biografia">Biografia</option>
+                            <option value="Autobiografia">Autobiografia</option>
+                            <option value="Memórias">Memórias</option>
+                            <option value="Epistolar">Epistolar</option>
+                            <option value="Fantasia">Fantasia</option>
+                            <option value="Ficção Científica">Ficção Científica</option>
+                            <option value="Terror">Terror</option>
+                            <option value="Suspense">Suspense</option>
+                            <option value="Mistério">Mistério</option>
+                            <option value="Aventura">Aventura</option>
+                            <option value="Histórico">Histórico</option>
+                            <option value="Policial">Policial</option>
+                            <option value="Psicológico">Psicológico</option>
+                            <option value="Erótico">Erótico</option>
+                            <option value="Didático">Didático</option>
+                            <option value="Religioso">Religioso</option>
+                            <option value="Espiritualista">Espiritualista</option>
+                            <option value="Autoajuda">Autoajuda</option>
+                            <option value="Humor">Humor</option>
+                            <option value="Satírico">Satírico</option>
+                            <option value="Lírico">Lírico</option>
+                            <option value="Épico">Épico</option>
+                            <option value="Narrativo">Narrativo</option>
+                            <option value="Dramático">Dramático</option>
+                            <option value="Gótico">Gótico</option>
+                            <option value="Distopia">Distopia</option>
+                            <option value="Utopia">Utopia</option>
+                            <option value="Realismo Mágico">Realismo Mágico</option>
+                            <option value="Regionalista">Regionalista</option>
+                            <option value="Naturalismo">Naturalismo</option>
+                            <option value="Romantismo">Romantismo</option>
+                            <option value="Modernismo">Modernismo</option>
+                            <option value="Pós-modernismo">Pós-modernismo</option>
+                            <option value="Realismo">Realismo</option>
+                            <option value="Simbolismo">Simbolismo</option>
+                            <option value="Expressionismo">Expressionismo</option>
+                            <option value="Existencialismo">Existencialismo</option>
+                            <option value="Surrealismo">Surrealismo</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="Imagem">Imagem:</label><br>
+                        <input type="text" id="Autor" name="Imagem" required>
+                    </div>
+                    <div>
+                        <label for="Formato">Formato:</label><br>
+                        <select type="text" id="Autor" name="Formato" required>
+                            <option value="" disabled selected>Formato</option>
+                            <option value="Romance">Fisico</option>
+                            <option value="Conto">digital</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="Valor">Valor:</label><br>
+                        <input type="number" id="Valor" name="Valor" required>
+                    </div>
+                    <div>
+                        <label for="Ano_P">Ano de Publicação:</label><br>
+                        <input type="date" id="Ano_P" name="Ano_P" required>
+                    </div>
+                    <div>
+                        <label for="Estado">Estado:</label><br>
+                        <select type="text" id="Estado" name="Estado" required>
+                            <option value="" disabled selected>Estado</option>
+                            <option value="Novo">Novo</option>
+                            <option value="Usado">Usado</option>
+                        </select>
+                    </div>
+                        <button type="submit">Adicionar Dados</button>
                 </form>
             </main>
             <div class="format-buttons">
@@ -59,7 +151,7 @@
 
 
 
-    
+
     <script>
 
         localStorage.clear();
@@ -69,14 +161,26 @@
             event.preventDefault();
 
 
-            const nome = document.getElementById('nome').value;
-            const idade = document.getElementById('idade').value;
-            const cidade = document.getElementById('cidade').value;
+            const Id = document.getElementById('Id').value;
+            const Titulo = document.getElementById('Titulo').value;
+            const Editora = document.getElementById('Editora').value;
+            const Autor = document.getElementById('Autor').value;
+            const Genero = document.getElementById('Genero').value;
+            const Imagem = document.getElementById('Imagem').value;
+            const Formato = document.getElementById('Formato').value;
+            const Valor = document.getElementById('Valor').value;
+            const Ano = document.getElementById('Ano_P').value;
+            const Estado = document.getElementById('Estado').value;
 
             const novosDados = {
-                nome: nome,
-                idade: parseInt(idade),
-                cidade: cidade
+                
+                Autor: Autor,
+                Genero: Genero
+                Imagem: imagem,
+                Formato: Formato,
+                Valor: parseFloat(Valor),
+                Ano: parseDate(Ano),
+                Estado: Estado
             };
 
             const dadosExistentes = JSON.parse(localStorage.getItem('dadosJSON')) || [];
