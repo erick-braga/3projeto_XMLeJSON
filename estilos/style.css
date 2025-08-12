@@ -36,7 +36,7 @@ body {
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.24);
-    margin-bottom: 2000px;
+    margin-bottom: 200px;
 }
 
 main {
@@ -64,9 +64,10 @@ button {
 }
 
 button:hover {
-        background-color: rgb(55, 83, 107);
+    background-color: rgb(55, 83, 107);
 
 }
+
 .format-buttons {
     display: flex;
     flex-flow: column;
@@ -86,4 +87,5 @@ button:hover {
 #resultado {
     background-color: white;
     padding: 20px;
+
 }
